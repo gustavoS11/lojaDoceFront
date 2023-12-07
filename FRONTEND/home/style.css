@@ -1,0 +1,38 @@
+*{
+    font-size: 16px;
+    color: rgb(11, 11, 107);
+}
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(226, 183, 43);
+    
+}
+div{
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+}
+#div-lucro{
+    display: flex;
+    flex-direction: row;
+    top: auto;
+    bottom: auto;
+    margin: 50px;
+}
+#select-product{
+    text-transform: capitalize;
+}
+input{
+    border-radius: 16px;
+    font-weight: 700;
+    font-family: 'Courier New', Courier, monospace;
+}
+ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-transform: capitalize;
+}

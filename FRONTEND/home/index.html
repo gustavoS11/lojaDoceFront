@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumo Financeiro</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <form id="form-resume">
+            <div id="div-lucro">
+                <div>
+                    <div id="div-day"></div>
+                    <div id="div-month"></div>
+                </div>
+                <div>
+                    <form id="comprar" method="post">
+                        <div>
+                            <label for="select-product">Selecione o produto</label>
+                            <select name="select-product" id="select-product">Selecione</select>
+                            <label for="input-quantity">Insira a quantidade vendida</label>
+                            <input type="text" name="input-quantity" id="input-quantity" placeholder="Vendas">
+                            <input type="submit" value="Confirmar">
+                        </div>
+                    </form>
+                </div>
+                <div id="div-product">
+                    <h1>Produtos</h1>
+                    <ul id="ul-product"></ul>
+                </div>
+            </div>
+            <div>
+                <a href="/registerProduct/index.html">Cadastrar produto</a>
+            </div>
+        </form>
+    </main>
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>

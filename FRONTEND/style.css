@@ -1,0 +1,67 @@
+#form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 15px;
+    border-radius: 16px;
+    background-color: crimson;
+    width: 20%;
+}
+body{
+    margin-top: 35vh;
+}
+div{
+    padding: 10px;
+}
+input{
+    border-radius: 16px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+
+
+
+
+.toastify{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-radius: 32px;
+    background-color: green;
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+    position: fixed;
+    top: -100px;
+    animation: toastAnimation 5s ease;
+}
+.error{
+    background-color: red;
+}
+.toastify p{
+    font-size: 12px;
+    color: white;
+}
+
+@keyframes toastAnimation{
+    0%,100%{
+        position: fixed;
+        top: -100px;
+    }
+    50%{
+        top: 50px;
+    }
+}
+@keyframes btnAnimation{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(180deg);
+    }
+}
