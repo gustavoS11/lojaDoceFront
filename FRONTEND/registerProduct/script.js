@@ -25,7 +25,7 @@ async function register() {
         localStorage.setItem("@token-exemplo", resJson.accessToken)
         localStorage.setItem("@user-exemplo", JSON.stringify(resJson.user))
         setTimeout(() => {
-            window.location.href = "./home"
+            window.location.href = "/home"
         }, 3000)
     } else {
         console.log("Algo deu errado!")
