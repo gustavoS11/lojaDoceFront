@@ -1,2 +1,2 @@
 //export const baseUrl = "http://localhost:3001"
-export const baseUrl = "https://l-front.vercel.app"
+export const baseUrl = "https://lojadoce.onrender.com"
