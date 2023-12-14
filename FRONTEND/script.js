@@ -27,7 +27,7 @@ async function login() {
         localStorage.setItem("@token-exemplo", resJson.accessToken)
         localStorage.setItem("@user-exemplo", JSON.stringify(resJson.user))
         setTimeout(() => {
-            window.location.href = "./home"
+            window.location.href = "/home"
         }, 3000)
     } else {
         toastify("Email ou senha incorretos", "error")
