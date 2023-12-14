@@ -1,9 +1,13 @@
 const myHeaders = {
     "Content-Type": "application/json",
-};
+}
+import { baseUrl } from "../api.js"
+
+const month = new Date().getUTCMonth() + 1
+const day = new Date().getUTCDay()
 
 async function selectProducts() {
-    const products = await fetch("http://localhost:3001/products")
+    const products = await fetch(`${baseUrl}/products`)
     const productsJson = await products.json()
     const selectProduct = document.querySelector("#select-product")
     productsJson.forEach(product => {
@@ -13,7 +17,7 @@ async function selectProducts() {
     })
 } selectProducts()
 async function renderProducts() {
-    const products = await fetch("http://localhost:3001/products")
+    const products = await fetch(`${baseUrl}/products`)
     const productsJson = await products.json()
     const ulProduct = document.querySelector('#ul-product')
     productsJson.forEach(product => {
@@ -23,10 +27,10 @@ async function renderProducts() {
         `)
     })
 
-    const month = new Date().getUTCMonth()
-    const day = new Date().getUTCDay()
-    const resLucro = await fetch(`http://localhost:3001/sale`)
+    const resLucro = await fetch(`${baseUrl}/sale`)
     const lucroJson = await resLucro.json()
+    const resDespesas = await fetch(`${baseUrl}/expenses`)
+    const despesasJson = await resDespesas.json()
 
     let lucroDiario = 0
     let despesasDiarias = 0
@@ -34,8 +38,14 @@ async function renderProducts() {
     lucroJson.forEach(profit => {
         if (profit.day === day && profit.month === month) {
             console.log(profit)
-            lucroDiario += vendasTotaisDiarias - despesasDiarias
             vendasTotaisDiarias += profit.value
+            lucroDiario += vendasTotaisDiarias
+        }
+    })
+    despesasJson.forEach(expense => {
+        if (expense.day === day && profit.month === month) {
+            despesasDiarias += expense.value
+            lucroDiario -= despesasDiarias
         }
     })
     const divDayLucro = document.querySelector("#div-day")
@@ -54,6 +64,13 @@ async function renderProducts() {
     lucroJson.forEach(profit => {
         if (profit.month == month) {
             vendasTotaisMensais += profit.value
+            lucrosMensais += vendasTotaisMensais
+        }
+    })
+    despesasJson.forEach(expense => {
+        if (expense.month === month) {
+            despesasMensais += expense.value
+            lucrosMensais -= vendasTotaisMensais
         }
     })
     const divMonthLucro = document.querySelector("#div-month")
@@ -71,10 +88,8 @@ async function renderProducts() {
 async function sale() {
     const selectProduct = document.querySelector("#select-product").value
     const quantity = document.querySelector("#input-quantity").value
-    const product = await fetch(`http://localhost:3001/products/${selectProduct}`)
+    const product = await fetch(`${baseUrl}/products/${selectProduct}`)
     const productJson = await product.json()
-    const month = new Date().getUTCMonth()
-    const day = new Date().getUTCDay()
     const saleValue = parseInt(quantity) * parseInt(productJson.lucro)
     const sale = {
         "produto": productJson.id,
@@ -84,7 +99,7 @@ async function sale() {
     }
     const bodyJson = JSON.stringify(sale)
     const resSale = await fetch(
-        "http://localhost:3001/sale",
+        `${baseUrl}/sale`,
         {
             headers: myHeaders,
             method: "POST",

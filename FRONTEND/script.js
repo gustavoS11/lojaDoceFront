@@ -1,4 +1,5 @@
 import { toastify } from "./toastify.js"
+import { baseUrl } from "./api.js"
 const myHeaders = {
     "Content-Type": "application/json",
 };
@@ -12,7 +13,7 @@ async function login() {
     }
     const bodyJson = JSON.stringify(user)
     const resLogin = await fetch(
-        "http://localhost:3001/login",
+        `${baseUrl}/login`,
         {
 
             headers: myHeaders,
@@ -31,8 +32,6 @@ async function login() {
     } else {
         toastify("Email ou senha incorretos", "error")
     }
-
-    
 }
 
 const form = document.querySelector("form")

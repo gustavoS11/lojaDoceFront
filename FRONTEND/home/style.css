@@ -36,3 +36,7 @@ ul{
     gap: 15px;
     text-transform: capitalize;
 }
+li{
+    display: flex;
+    flex-direction: row;
+}
